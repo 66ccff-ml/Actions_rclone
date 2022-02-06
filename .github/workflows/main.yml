@@ -30,7 +30,7 @@ jobs:
           EOF
       - name: rclone-run
         run: |
-          # Rclone-Run
+          # Rclone-Mount
           sudo apt-get update && sudo apt-get install -y fuse
           # 延迟函数
           delay()
