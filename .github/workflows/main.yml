@@ -46,4 +46,4 @@ jobs:
           sudo apt-get install -y dotnet-sdk-6.0
           dotnet tool install --global BBDown
           sudo bash test.sh
-          sudo rclone move -P /home/runner/dd dd:/Download
+          sudo rclone move -P /home/runner/dd dd:/河野华
