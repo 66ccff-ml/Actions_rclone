@@ -49,4 +49,4 @@ jobs:
           sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
           sudo mkdir -p /dd
           sudo rclone mount dd:/ /dd --copy-links --allow-other --allow-non-empty --umask 000 --daemon
-          ls /dd
+          ls 
