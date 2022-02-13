@@ -47,4 +47,4 @@ jobs:
           # Rclone-Mount
           sudo apt-get update && sudo apt-get install -y fuse
           #sudo rclone mount dd:/ $HOME/dd --copy-links --allow-other --allow-non-empty --umask 000 --daemon
-          sudo rclone move -V /home/runner/dd dd:/河野华
+          sudo rclone move -v /home/runner/dd dd:/河野华
