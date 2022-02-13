@@ -1,5 +1,5 @@
 #!/bin/bash
 while read line
 do
-BBDown -hs --work-dir ~/bili/ $line
+$HOME/.dotnet/tools/BBDown -hs --work-dir /dd $line
 done < ~/1.txt
