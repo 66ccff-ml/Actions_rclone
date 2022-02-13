@@ -28,7 +28,7 @@ jobs:
           cat << EOF > ~/.config/rclone/rclone.conf
           $RCLONE_CONFIG
           EOF
-      - name: BBDown
+      - name: install-BBDown
         run: |
           wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
           sudo dpkg -i packages-microsoft-prod.deb
@@ -38,6 +38,8 @@ jobs:
           sudo apt-get install -y apt-transport-https
           sudo apt-get install -y dotnet-sdk-6.0
           dotnet tool install --global BBDown
+      - name: BBDown run
+        run: |
           sudo mkdir -p /home/runner/dd
           sudo bash test.sh
       - name: rclone-run
