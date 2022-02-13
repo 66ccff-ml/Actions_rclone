@@ -57,4 +57,4 @@ jobs:
           sudo apt-get update && \
           sudo apt-get install -y dotnet-sdk-6.0
           dotnet tool install --global BBDown
-          $HOME/.dotnet/tools/BBDown
+          bash test.sh
