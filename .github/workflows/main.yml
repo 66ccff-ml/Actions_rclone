@@ -36,7 +36,7 @@ jobs:
           sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
           sudo mkdir -p $HOME/dd
           sudo rclone mount dd:/ $HOME/dd --copy-links --allow-other --allow-non-empty --umask 000 --daemon
-          apt-get install ffmpeg
+          sudo apt-get install ffmpeg
           wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
           sudo dpkg -i packages-microsoft-prod.deb
           rm packages-microsoft-prod.deb
