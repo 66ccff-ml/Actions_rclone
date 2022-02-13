@@ -45,5 +45,5 @@ jobs:
           sudo apt-get update && \
           sudo apt-get install -y dotnet-sdk-6.0
           dotnet tool install --global BBDown
-          bash test.sh
+          sudo bash test.sh
           #rclone move -P $HOME/dd dd:/Download
