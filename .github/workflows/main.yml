@@ -30,16 +30,13 @@ jobs:
           EOF
       - name: BBDown
         run: |
-          # 安装 ffmpeg
-          sudo apt-get install ffmpeg
-          # 安装 dotnet
           wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
           sudo dpkg -i packages-microsoft-prod.deb
           rm packages-microsoft-prod.deb
           sudo apt-get update
+          sudo apt-get install -y ffmpeg
           sudo apt-get install -y apt-transport-https
           sudo apt-get install -y dotnet-sdk-6.0
-          # 安装 BBDown
           dotnet tool install --global BBDown
           sudo mkdir -p /home/runner/dd
           sudo bash test.sh
