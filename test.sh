@@ -1,5 +1,5 @@
 #!/bin/bash
 while read line
 do
-$HOME/.dotnet/tools/BBDown -hs --work-dir $HOME/dd/ $line
+/home/runner/.dotnet/tools/BBDown -hs --work-dir /home/runner/dd/ $line
 done < 1.txt
