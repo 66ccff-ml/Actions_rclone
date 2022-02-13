@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: install
+      - name: rclone-install
         run: |
           # 安装 rclone
           curl -O https://downloads.rclone.org/rclone-current-linux-amd64.zip
@@ -19,6 +19,17 @@ jobs:
           cd rclone-*-linux-amd64
           sudo mv rclone /usr/bin
           sudo chmod +x /usr/bin/rclone
+      - name: rclone-config
+        env:
+          RCLONE_CONFIG: ${{ secrets.RCLONE_CONFIG }}
+        run: |
+          # 写配置文件
+          mkdir -p ~/.config/rclone/
+          cat << EOF > ~/.config/rclone/rclone.conf
+          $RCLONE_CONFIG
+          EOF
+      - name: BBDown
+        run: |
           # 安装 ffmpeg
           sudo apt-get install ffmpeg
           # 安装 dotnet
@@ -31,22 +42,11 @@ jobs:
           sudo apt-get install -y dotnet-sdk-6.0
           # 安装 BBDown
           dotnet tool install --global BBDown
-      - name: rclone-config
-        env:
-          RCLONE_CONFIG: ${{ secrets.RCLONE_CONFIG }}
-        run: |
-          # 写配置文件
-          mkdir -p ~/.config/rclone/
-          cat << EOF > ~/.config/rclone/rclone.conf
-          $RCLONE_CONFIG
-          EOF
+          sudo mkdir -p /home/runner/dd
+          sudo bash test.sh
       - name: rclone-run
         run: |
           # Rclone-Mount
           sudo apt-get update && sudo apt-get install -y fuse
-          # 更改时区
-          sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-          sudo mkdir -p /home/runner/dd
           #sudo rclone mount dd:/ $HOME/dd --copy-links --allow-other --allow-non-empty --umask 000 --daemon
-          sudo bash test.sh
           sudo rclone move -V /home/runner/dd dd:/河野华
