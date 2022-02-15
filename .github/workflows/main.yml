@@ -35,16 +35,18 @@ jobs:
           rm packages-microsoft-prod.deb
           sudo apt-get update
           sudo apt-get install -y ffmpeg
+          sudo apt-get install gpac
           sudo apt-get install -y apt-transport-https
           sudo apt-get install -y dotnet-sdk-6.0
           dotnet tool install --global BBDown
       - name: BBDown run
         run: |
           sudo mkdir -p /home/runner/dd
-          sudo bash test.sh
+          sudo bash 1.sh
+          sudo bash 2.sh
       - name: rclone-run
         run: |
           # Rclone-Mount
           sudo apt-get update && sudo apt-get install -y fuse
           #sudo rclone mount dd:/ $HOME/dd --copy-links --allow-other --allow-non-empty --umask 000 --daemon
-          sudo rclone move -v /home/runner/dd dd:/河野华 --ignore-errors
+          sudo rclone move -v /home/runner/dd dd:/新科动漫Channel --ignore-errors
