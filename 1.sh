@@ -1,5 +1,5 @@
 #!/bin/bash
 for line in `cat 1.txt`
 do
-BBDown -hs --work-dir ~/bili/ $line
+/home/runner/.dotnet/tools/BBDown -hs --work-dir /home/runner/dd/ $line
 done
